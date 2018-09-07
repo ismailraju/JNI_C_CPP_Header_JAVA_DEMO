@@ -1,0 +1,37 @@
+
+
+Install: java jdk,jre, Mingw64(for 64 bit DLL),MingW32(for 32 bit DLL)
+========================================================================
+java compile && Header Genarated:
+================
+javac -h . HelloJNI.java
+
+> javac HelloJNI.java
+> javah HelloJNI
+
+
+32 bit(c):
+======
+mingw32-gcc -c -I"%JAVA_HOME%\include" -I"%JAVA_HOME%\include\win32" HelloJNI.c
+
+mingw32-gcc -shared -o hello.dll HelloJNI.o
+
+64 bit(c):
+========
+x86_64-w64-mingw32-gcc -c -I"%JAVA_HOME%\include" -I"%JAVA_HOME%\include\win32" HelloJNI.c
+
+x86_64-w64-mingw32-gcc -shared -o hello.dll HelloJNI.o
+ 
+x86_64-w64-mingw32-gcc -I"%JAVA_HOME%\include" -I"%JAVA_HOME%\include\win32" -shared -o hello.dll HelloJNI.c
+
+
+
+64 bit(cpp):
+=============
+
+x86_64-w64-mingw32-g++ -I"%JAVA_HOME%\include" -I"%JAVA_HOME%\include\win32" -shared -o hello.dll HelloJNI.cpp
+
+
+RUN:
+======
+java HelloJNI.class
