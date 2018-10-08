@@ -1,0 +1,32 @@
+   
+cd /home/ismailu/NetBeansProjects/jni/so
+
+gcc -shared -o libprtmsg.so printmessage.c -fPIC -I/usr/lib/jvm/java-8-oracle/include -I/usr/lib/jvm/java-8-oracle/include/linux
+
+ 
+gcc -shared -o libprtmsg.so printmessage.c -fPIC -I/usr/lib/jvm/java-8-oracle/include -I/usr/lib/jvm/java-8-oracle/include/linux
+
+java MyMain
+
+javac MyMain.java
+
+gcc -shared -o libprtmsg.so printmessage.c -fPIC -I/usr/lib/jvm/java-8-oracle/include -I/usr/lib/jvm/java-8-oracle/include/linux
+
+java MyMain
+
+export LD_LIBRARY_PATH=`pwd`
+
+echo $LD_LIBRARY_PATH
+
+java MyMain
+
+
+================================================
+
+file libprtmsg.so
+
+nm libprtmsg.so
+
+objdump -TC libprtmsg.so
+
+
